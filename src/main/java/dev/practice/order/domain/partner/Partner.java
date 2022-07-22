@@ -30,7 +30,8 @@ public class Partner extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @Getter @RequiredArgsConstructor
+    @Getter
+    @RequiredArgsConstructor
     public enum Status {
         ENABLE("활성화"), DISABLE("비활성화");
 
@@ -39,9 +40,9 @@ public class Partner extends AbstractEntity {
     }
 
     public Partner(String partnerName, String businessNo, String email) {
-        if(StringUtils.isEmpty(partnerName)) throw new RuntimeException("empty partnerName");
-        if(StringUtils.isEmpty(businessNo)) throw new RuntimeException("empty businessNo");
-        if(StringUtils.isEmpty(email)) throw new RuntimeException("empty email");
+        if (StringUtils.isEmpty(partnerName)) throw new RuntimeException("empty partnerName");
+        if (StringUtils.isEmpty(businessNo)) throw new RuntimeException("empty businessNo");
+        if (StringUtils.isEmpty(email)) throw new RuntimeException("empty email");
 
         this.partnerToken = TokenGenerator.randomCharacterWithPrefix(PREFIX_PARTNER);
         this.partnerName = partnerName;

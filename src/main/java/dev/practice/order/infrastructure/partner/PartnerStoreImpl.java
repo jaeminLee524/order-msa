@@ -16,13 +16,13 @@ public class PartnerStoreImpl implements PartnerStore {
     private final PartnerRepository partnerRepository;
 
     @Override
-    public Partner store(Partner partner) {
-        if (StringUtils.isEmpty(partner.getPartnerToken())) throw new InvalidParamException("partner.getPartnerToken()");
-        if (StringUtils.isEmpty(partner.getPartnerName())) throw new InvalidParamException("partner.getPartnerName()");
-        if (StringUtils.isEmpty(partner.getBusinessNo())) throw new InvalidParamException("partner.getBusinessNo()");
-        if (StringUtils.isEmpty(partner.getEmail())) throw new InvalidParamException("partner.getEmail()");
-        if (partner.getStatus() == null) throw new InvalidParamException("partner.getStatus()");
+    public Partner store(Partner initPartner) {
+        if (StringUtils.isEmpty(initPartner.getPartnerToken())) throw new InvalidParamException("initPartner.getPartnerToken()");
+        if (StringUtils.isEmpty(initPartner.getPartnerName())) throw new InvalidParamException("initPartner.getPartnerName()");
+        if (StringUtils.isEmpty(initPartner.getBusinessNo())) throw new InvalidParamException("initPartner.getBusinessNo()");
+        if (StringUtils.isEmpty(initPartner.getEmail())) throw new InvalidParamException("initPartner.getEmail()");
+        if (initPartner.getStatus() == null) throw new InvalidParamException("initPartner.getStatus()");
 
-        return partnerRepository.save(partner);
+        return partnerRepository.save(initPartner);
     }
 }
