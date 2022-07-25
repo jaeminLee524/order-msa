@@ -37,7 +37,7 @@ public class ItemOption {
     }
 
     /** 생성 메소드 **/
-    private static ItemOption of(ItemOptionGroup itemOptionGroup, Integer ordering, String itemOptionName, Long itemOptionPrice) {
+    public static ItemOption of(ItemOptionGroup itemOptionGroup, Integer ordering, String itemOptionName, Long itemOptionPrice) {
         if (itemOptionGroup == null) throw new InvalidParamException("ItemOption.itemOptionGroup");
         if (ordering == null) throw new InvalidParamException("ItemOption.ordering");
         if (StringUtils.isBlank(itemOptionName)) throw new InvalidParamException("ItemOption.itemOptionName");

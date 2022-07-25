@@ -43,7 +43,7 @@ public class ItemOptionGroup {
     }
 
     /** 생성 메소드 **/
-    private static ItemOptionGroup of(Item item, Integer ordering, String itemOptionGroupName) {
+    public static ItemOptionGroup of(Item item, Integer ordering, String itemOptionGroupName) {
         if (item == null) throw new InvalidParamException("ItemOptionGroup.item");
         if (ordering == null) throw new InvalidParamException("ItemOptionGroup.ordering");
         if (StringUtils.isBlank(itemOptionGroupName)) throw new InvalidParamException("ItemOptionGroup.itemOptionGroupName");
