@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -27,6 +28,13 @@ public class ItemReaderImpl implements ItemReader {
 
     @Override
     public List<ItemInfo.ItemOptionGroupInfo> getItemOptionSeries(Item item) {
-        return null;
+        return item.getItemOptionGroups().stream()
+                .map(itemOptionGroup -> {
+                    // create List<ItemInfo.itemOptionInfo>
+                    List<ItemInfo.ItemOptionInfo> itemOptionInfoList = itemOptionGroup.getItemOptionList().stream()
+                            .map(itemOption -> new ItemInfo.ItemOptionInfo(itemOption)).collect(Collectors.toList());
+
+                    return new ItemInfo.ItemOptionGroupInfo(itemOptionGroup, itemOptionInfoList);
+                }).collect(Collectors.toList());
     }
 }

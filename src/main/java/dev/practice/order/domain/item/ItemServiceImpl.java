@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -83,6 +85,8 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ItemInfo.Main retrieveItemInfo(String itemToken) {
-        return null;
+        Item item = itemReader.getItemBy(itemToken);
+        List<ItemInfo.ItemOptionGroupInfo> itemOptionSeries = itemReader.getItemOptionSeries(item);
+        return new ItemInfo.Main(item, itemOptionSeries);
     }
 }
