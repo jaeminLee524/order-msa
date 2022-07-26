@@ -1,5 +1,9 @@
 package dev.practice.order.domain.item;
 
-public interface ItemReader  {
-    
+import java.util.List;
+
+public interface ItemReader {
+    Item getItemBy(String itemToken);
+
+    List<ItemInfo.ItemOptionGroupInfo> getItemOptionSeries(Item item);
 }

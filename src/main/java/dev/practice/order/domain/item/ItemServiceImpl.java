@@ -71,13 +71,14 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void changeOnSale(String itemToken) {
-
-
+        Item item = itemReader.getItemBy(itemToken);
+        item.changeOnSales();
     }
 
     @Override
     public void changeEndOfSale(String itemToken) {
-
+        Item item = itemReader.getItemBy(itemToken);
+        item.changeEndOfSales();
     }
 
     @Override
