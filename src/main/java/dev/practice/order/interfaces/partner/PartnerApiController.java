@@ -1,4 +1,4 @@
-package dev.practice.order.interfaces;
+package dev.practice.order.interfaces.partner;
 
 import dev.practice.order.application.partner.PartnerFacade;
 import dev.practice.order.common.response.CommonResponse;
@@ -20,10 +20,13 @@ import javax.validation.Valid;
 public class PartnerApiController {
 
     private final PartnerFacade partnerFacade;
+    private final PartnerDtoMapper partnerDtoMapper;
 
     @PostMapping
     public CommonResponse registerPartner(@RequestBody @Valid PartnerDto.RegisterRequest request) {
-        PartnerCommand partnerCommand = request.toCommand();
+        // dto request -> convert to command
+        PartnerCommand partnerCommand = partnerDtoMapper.of(request);
+//        PartnerCommand partnerCommand = request.toCommand();
         PartnerInfo partnerInfo = partnerFacade.registerPartner(partnerCommand);
         PartnerDto.RegisterResponse response = new PartnerDto.RegisterResponse(partnerInfo);
 

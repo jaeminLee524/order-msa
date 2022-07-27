@@ -1,4 +1,4 @@
-package dev.practice.order.interfaces;
+package dev.practice.order.interfaces.partner;
 
 import dev.practice.order.domain.partner.Partner;
 import dev.practice.order.domain.partner.PartnerCommand;
