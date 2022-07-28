@@ -1,6 +1,5 @@
 package dev.practice.order.interfaces.item;
 
-import dev.practice.order.domain.item.ItemCommand;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +10,7 @@ public class ItemDto {
     @Getter
     @Setter
     public static class RegisterItemRequest {
-        private String itemToken;
+        private String partnerToken;
         private String itemName;
         private String itemPrice;
         private List<RegisterItemOptionGroupRequest> itemOptionGroupList;
@@ -22,7 +21,7 @@ public class ItemDto {
     public static class RegisterItemOptionGroupRequest {
         private Integer ordering;
         private String itemOptionGroupName;
-        private List<RegisterItemOptionRequest> itemOptionRequestList;
+        private List<RegisterItemOptionRequest> itemOptionList;
     }
 
     @Getter
@@ -33,6 +32,10 @@ public class ItemDto {
         private Long itemOptionPrice;
     }
 
-
+    @Getter
+    @Setter
+    public static class RegisterResponse {
+        private String itemToken;
+    }
 
 }

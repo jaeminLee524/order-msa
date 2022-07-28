@@ -39,7 +39,7 @@ public class Partner extends AbstractEntity {
 
     }
 
-    public Partner(String partnerName, String businessNo, String email) {
+    protected Partner(String partnerName, String businessNo, String email) {
         if (StringUtils.isEmpty(partnerName)) throw new RuntimeException("empty partnerName");
         if (StringUtils.isEmpty(businessNo)) throw new RuntimeException("empty businessNo");
         if (StringUtils.isEmpty(email)) throw new RuntimeException("empty email");
