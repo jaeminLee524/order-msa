@@ -30,7 +30,7 @@ public class ItemOption {
     @JoinColumn(name = "item_option_id")
     private ItemOptionGroup itemOptionGroup;
 
-    public ItemOption(ItemOptionGroup itemOptionGroup, Integer ordering, String itemOptionName, Long itemOptionPrice) {
+    protected ItemOption(ItemOptionGroup itemOptionGroup, Integer ordering, String itemOptionName, Long itemOptionPrice) {
         this.ordering = ordering;
         this.itemOptionName = itemOptionName;
         this.itemOptionPrice = itemOptionPrice;

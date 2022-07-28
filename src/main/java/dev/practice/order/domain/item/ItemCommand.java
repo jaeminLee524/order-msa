@@ -12,7 +12,7 @@ public class ItemCommand {
     public static class RegisterItemRequest {
         private String itemName;
         private Long itemPrice;
-        private List<RegisterItemOptionGroupRequest> registerItemOptionRequestList;
+        private List<RegisterItemOptionGroupRequest> registerItemOptionGroupRequestList;
 
         public Item toEntity(Long partnerId) {
             return Item.of(partnerId, itemName, itemPrice);

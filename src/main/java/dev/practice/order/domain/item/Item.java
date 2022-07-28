@@ -37,7 +37,7 @@ public class Item extends AbstractEntity {
     @OneToMany(mappedBy = "item", cascade = CascadeType.PERSIST)
     private List<ItemOptionGroup> itemOptionGroups = new ArrayList<>();
 
-    public Item(Long partnerId, String itemName, Long itemPrice) {
+    protected Item(Long partnerId, String itemName, Long itemPrice) {
         this.itemToken = TokenGenerator.randomCharacterWithPrefix(PREFIX_ITEM);
         this.partnerId = partnerId;
         this.itemName = itemName;

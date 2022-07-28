@@ -36,7 +36,7 @@ public class ItemOptionGroup {
     @OneToMany(mappedBy = "itemOptionGroup", cascade = CascadeType.PERSIST)
     private List<ItemOption> itemOptionList = new ArrayList<>();
 
-    public ItemOptionGroup(Item item, Integer ordering, String itemOptionGroupName) {
+    protected ItemOptionGroup(Item item, Integer ordering, String itemOptionGroupName) {
         this.item = item;
         this.ordering = ordering;
         this.itemOptionGroupName = itemOptionGroupName;
