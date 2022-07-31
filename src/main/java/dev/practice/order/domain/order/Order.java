@@ -4,7 +4,7 @@ import dev.practice.order.common.exception.IllegalStatusException;
 import dev.practice.order.common.exception.InvalidParamException;
 import dev.practice.order.common.util.TokenGenerator;
 import dev.practice.order.domain.order.fragment.DeliveryFragment;
-import dev.practice.order.domain.order.item.OrderItem;
+import dev.practice.order.domain.order.orderitem.OrderItem;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;

@@ -2,9 +2,9 @@ package dev.practice.order.domain.order;
 
 import dev.practice.order.domain.item.Item;
 import dev.practice.order.domain.order.fragment.DeliveryFragment;
-import dev.practice.order.domain.order.item.OrderItem;
-import dev.practice.order.domain.order.item.OrderItemOption;
-import dev.practice.order.domain.order.item.OrderItemOptionGroup;
+import dev.practice.order.domain.order.orderitem.OrderItem;
+import dev.practice.order.domain.order.orderitem.OrderItemOption;
+import dev.practice.order.domain.order.orderitem.OrderItemOptionGroup;
 import lombok.Getter;
 
 import java.util.List;
@@ -20,12 +20,12 @@ public class OrderCommand {
         private String receiverZipcode;
         private String receiverAddress1;
         private String receiverAddress2;
-        private String etcMessgae;
+        private String etcMessage;
         private List<RegisterOrderItem> orderItemList;
 
         public Order toEntity() {
             DeliveryFragment deliveryFragment =
-                    DeliveryFragment.of(receiverName, receiverPhone, receiverZipcode, receiverAddress1, receiverAddress2, etcMessgae);
+                    DeliveryFragment.of(receiverName, receiverPhone, receiverZipcode, receiverAddress1, receiverAddress2, etcMessage);
 
             return Order.of(this.userId, this.payMethod, deliveryFragment);
         }
@@ -46,7 +46,7 @@ public class OrderCommand {
     }
 
     @Getter
-    private static class RegisterOrderItemOptionGroup {
+    public static class RegisterOrderItemOptionGroup {
         private Integer ordering;
         private String itemOptionGroupName;
         private List<RegisterOrderItemOption> orderItemOptionList;
@@ -63,7 +63,7 @@ public class OrderCommand {
         private String itemOptionName;
         private Integer itemOptionPrice;
 
-        public OrderItemOption of(OrderItemOptionGroup orderItemOptionGroup) {
+        public OrderItemOption toEntity(OrderItemOptionGroup orderItemOptionGroup) {
             return OrderItemOption.of(ordering, itemOptionName, itemOptionPrice, orderItemOptionGroup);
         }
     }
