@@ -30,7 +30,7 @@ public class OrderItem {
     private Long itemId;
     private String itemToken;
     private String itemName;
-    private Integer itemPrice;
+    private Long itemPrice;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "order_id")
@@ -61,7 +61,7 @@ public class OrderItem {
     }
 
     /** 생성 매서드 **/
-    protected OrderItem(Long partnerId, Integer orderCount, Long itemId, String itemToken, String itemName, Integer itemPrice, Order order) {
+    protected OrderItem(Long partnerId, Integer orderCount, Long itemId, String itemToken, String itemName, Long itemPrice, Order order) {
         this.partnerId = partnerId;
         this.orderCount = orderCount;
         this.itemId = itemId;
@@ -72,7 +72,7 @@ public class OrderItem {
         this.deliveryStatus = DeliveryStatus.BEFORE_DELIVERY;
     }
 
-    public static OrderItem of(Long partnerId, Integer orderCount, Long itemId, String itemToken, String itemName, Integer itemPrice, Order order) {
+    public static OrderItem of(Long partnerId, Integer orderCount, Long itemId, String itemToken, String itemName, Long itemPrice, Order order) {
         if (partnerId == null) throw new InvalidParamException("OrderItemLine.partnerId");
         if (orderCount == null) throw new InvalidParamException("OrderItemLine.orderCount");
         if (itemId == null) throw new InvalidParamException("OrderItemLine.itemId");

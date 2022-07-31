@@ -25,7 +25,6 @@ public class ItemOption {
     private String itemOptionName;
     private Long itemOptionPrice;
 
-    // ItemOptionGroup 1:N ItemOption
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "item_option_id")
     private ItemOptionGroup itemOptionGroup;
