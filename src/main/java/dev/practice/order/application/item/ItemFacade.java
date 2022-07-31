@@ -21,4 +21,18 @@ public class ItemFacade {
 
         return itemToken;
     }
+
+    public void changeOnSaleItem(String itemToken) {
+        itemService.changeOnSale(itemToken);
+    }
+
+    public void changeEndOfSaleItem(String itemToken) {
+        itemService.changeEndOfSale(itemToken);
+    }
+
+    public ItemInfo.Main retrieveItemInfo(String itemToken) {
+        return itemService.retrieveItemInfo(itemToken);
+    }
+
+
 }
