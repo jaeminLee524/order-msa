@@ -24,11 +24,9 @@ public class PartnerApiController {
 
     @PostMapping
     public CommonResponse registerPartner(@RequestBody @Valid PartnerDto.RegisterRequest request) {
-        // dto request -> convert to command
         PartnerCommand partnerCommand = partnerDtoMapper.of(request);
-//        PartnerCommand partnerCommand = request.toCommand();
         PartnerInfo partnerInfo = partnerFacade.registerPartner(partnerCommand);
-        PartnerDto.RegisterResponse response = new PartnerDto.RegisterResponse(partnerInfo);
+        PartnerDto.RegisterResponse response = partnerDtoMapper.of(partnerInfo);
 
         return CommonResponse.success(response);
     }
