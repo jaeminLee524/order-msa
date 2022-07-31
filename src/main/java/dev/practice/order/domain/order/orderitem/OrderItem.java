@@ -1,4 +1,4 @@
-package dev.practice.order.domain.order.item;
+package dev.practice.order.domain.order.orderitem;
 
 import dev.practice.order.common.exception.InvalidParamException;
 import dev.practice.order.domain.order.Order;
