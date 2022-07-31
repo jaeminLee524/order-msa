@@ -30,7 +30,6 @@ public class ItemReaderImpl implements ItemReader {
     public List<ItemInfo.ItemOptionGroupInfo> getItemOptionSeries(Item item) {
         return item.getItemOptionGroups().stream()
                 .map(itemOptionGroup -> {
-                    // create List<ItemInfo.itemOptionInfo>
                     List<ItemInfo.ItemOptionInfo> itemOptionInfoList = itemOptionGroup.getItemOptionList().stream()
                             .map(itemOption -> new ItemInfo.ItemOptionInfo(itemOption)).collect(Collectors.toList());
 
