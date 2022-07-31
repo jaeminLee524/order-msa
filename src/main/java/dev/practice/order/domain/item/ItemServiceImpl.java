@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Slf4j
+@Transactional(readOnly = true)
 @Service
 @RequiredArgsConstructor
 public class ItemServiceImpl implements ItemService {
@@ -72,12 +73,14 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional
     public void changeOnSale(String itemToken) {
         Item item = itemReader.getItemBy(itemToken);
         item.changeOnSales();
     }
 
     @Override
+    @Transactional
     public void changeEndOfSale(String itemToken) {
         Item item = itemReader.getItemBy(itemToken);
         item.changeEndOfSales();
