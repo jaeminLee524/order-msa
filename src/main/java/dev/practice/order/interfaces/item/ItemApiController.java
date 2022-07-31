@@ -45,6 +45,7 @@ public class ItemApiController {
     public CommonResponse changeOnSaleItem(@RequestBody @Valid ItemDto.ChangeStatusItemRequest request) {
         String itemToken = request.getItemToken();
         itemFacade.changeOnSaleItem(itemToken);
+
         return CommonResponse.success("OK");
     }
 
@@ -58,6 +59,7 @@ public class ItemApiController {
     public CommonResponse changeEndOfItem(@RequestBody @Valid ItemDto.ChangeStatusItemRequest request) {
         String itemToken = request.getItemToken();
         itemFacade.changeEndOfSaleItem(itemToken);
+
         return CommonResponse.success("OK");
     }
 
@@ -72,6 +74,7 @@ public class ItemApiController {
     public CommonResponse retrieve(@PathVariable("itemToken") String itemToken) {
         ItemInfo.Main main = itemFacade.retrieveItemInfo(itemToken);
         ItemDto.Main response = itemDtoMapper.of(main);
+
         return CommonResponse.success(response);
     }
 }
