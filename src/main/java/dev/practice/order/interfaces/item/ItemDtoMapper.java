@@ -20,5 +20,14 @@ public interface ItemDtoMapper {
 
     ItemCommand.RegisterItemOptionRequest of(ItemDto.RegisterItemOptionRequest request);
 
+    /** response **/
     ItemDto.RegisterResponse of(String itemToken);
+
+    @Mappings({@Mapping(target = "itemOptionGroupInfoList", source = "info.itemOptionGroupInfoList")})
+    ItemDto.Main of(ItemInfo.Main info);
+
+    @Mappings({@Mapping(target = "itemOptionInfoList", source = "info.itemOptionInfoList")})
+    ItemDto.ItemOptionGroupInfo of(ItemInfo.ItemOptionGroupInfo info);
+
+    ItemDto.ItemOptionInfo of(ItemInfo.ItemOptionInfo info);
 }
