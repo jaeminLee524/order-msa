@@ -1,10 +1,13 @@
 package dev.practice.order.domain.order;
 
 import dev.practice.order.domain.order.fragment.DeliveryFragment;
+import dev.practice.order.domain.order.orderitem.OrderItem;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -18,9 +21,9 @@ public class OrderServiceImpl implements OrderService{
     @Transactional
     @Override
     public String registerOrder(OrderCommand.RegisterOrder registerOrder) {
-        // Order 생성
         Order order = orderStore.store(registerOrder.toEntity());
+        orderItemSeriesFactory.store(order, registerOrder);
 
-        return null;
+        return order.getOrderToken();
     }
 }
