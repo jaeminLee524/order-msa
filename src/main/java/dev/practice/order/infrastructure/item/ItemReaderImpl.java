@@ -1,4 +1,4 @@
-package dev.practice.order.infrastructure;
+package dev.practice.order.infrastructure.item;
 
 import dev.practice.order.common.exception.InvalidParamException;
 import dev.practice.order.domain.item.Item;

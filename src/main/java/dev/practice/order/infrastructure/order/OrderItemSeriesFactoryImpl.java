@@ -29,20 +29,20 @@ public class OrderItemSeriesFactoryImpl implements OrderItemSeriesFactory {
         return registerOrder.getOrderItemList().stream()
                 .map(registerOrderItem -> {
                     // orderItem 저장
-                    var item = itemReader.getItemBy(registerOrderItem.getItemToken());
-                    var initOrderItem = new OrderCommand.RegisterOrderItem().toEntity(order, item);
-                    var orderItem = orderStore.store(initOrderItem);
+                    Item item = itemReader.getItemBy(registerOrderItem.getItemToken());
+                    OrderItem initOrderItem = registerOrderItem.toEntity(order, item);
+                    OrderItem orderItem = orderStore.store(initOrderItem);
 
                     // orderItemOptionGroup 저장
-                    registerOrderItem.getOrderItemOptionGroupList().stream().forEach(registerOrderItemOptionGroup -> {
-                                var initOrderItemOptionGroup = registerOrderItemOptionGroup.toEntity(orderItem);
-                                var orderItemOptionGroup = orderStore.store(initOrderItemOptionGroup);
+                    registerOrderItem.getOrderItemOptionGroupList().forEach(registerOrderItemOptionGroup -> {
+                        OrderItemOptionGroup initOrderItemOptionGroup = registerOrderItemOptionGroup.toEntity(orderItem);
+                        OrderItemOptionGroup orderItemOptionGroup = orderStore.store(initOrderItemOptionGroup);
 
-                                // orderItemOption 저장
-                                registerOrderItemOptionGroup.getOrderItemOptionList().stream().forEach(registerOrderItemOption -> {
-                                    var initOrderItemOption = registerOrderItemOption.toEntity(orderItemOptionGroup);
-                                    orderStore.store(initOrderItemOption);
-                                });
+                        // orderItemOption 저장
+                        registerOrderItemOptionGroup.getOrderItemOptionList().forEach(registerOrderItemOption -> {
+                            OrderItemOption initOrderItemOption = registerOrderItemOption.toEntity(orderItemOptionGroup);
+                            orderStore.store(initOrderItemOption);
+                        });
                     });
                     return orderItem;
             }).collect(Collectors.toList());

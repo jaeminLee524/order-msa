@@ -1,10 +1,14 @@
 package dev.practice.order.interfaces.order;
 
+import dev.practice.order.domain.order.orderitem.OrderItem;
+import dev.practice.order.infrastructure.order.OrderInfo;
 import lombok.Getter;
 import lombok.Setter;
+import org.checkerframework.checker.guieffect.qual.SafeEffect;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public class OrderDto {
@@ -83,6 +87,55 @@ public class OrderDto {
     @Getter @Setter
     public static class RegisterResponse {
         private String orderToken;
+    }
+
+    @Getter @Setter
+    public static class Main {
+        private String orderToken;
+        private Long userId;
+        private String payMethod;
+        private Long totalAmount;
+        private DeliveryInfo deliveryInfo;
+        private String orderedAt;
+        private String status;
+        private String statusDescription;
+        private List<OrderItem> orderItemList;
+    }
+
+    @Getter @Setter
+    public static class DeliveryInfo {
+        private String receiverName;
+        private String receiverPhone;
+        private String receiverZipcode;
+        private String receiverAddress1;
+        private String receiverAddress2;
+        private String etcMessage;
+    }
+
+    @Getter @Setter
+    public static class OrderItem {
+        private Long partnerId;
+        private Long itemId;
+        private String itemName;
+        private Long itemPrice;
+        private Integer orderCount;
+        private Long totalAmount;
+        private String deliveryStatus;
+        private String deliveryDescription;
+        private List<OrderItemOptionGroup> itemOptionGroupList;
+    }
+
+    @Getter @Setter
+    public static class OrderItemOptionGroup {
+        private Integer ordering;
+        private String itemOptionGroupName;
+        private List<OrderItemOption> itemOptionList;
+    }
+
+    @Getter @Setter
+    public static class OrderItemOption {
+        private Integer ordering;
+        private String itemOptionName;
     }
 
 }
