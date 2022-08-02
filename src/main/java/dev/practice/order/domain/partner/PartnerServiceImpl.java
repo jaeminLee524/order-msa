@@ -7,13 +7,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 @Service
 public class PartnerServiceImpl implements PartnerService{
 
     private final PartnerStore partnerStore;
     private final PartnerReader partnerReader;
 
+    @Transactional
     @Override
     public PartnerInfo registerPartner(PartnerCommand command) {
         // 1. command -> initPartner => command toEntity()통해 내부에서
@@ -25,13 +26,13 @@ public class PartnerServiceImpl implements PartnerService{
         return PartnerInfo.of(partner);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public PartnerInfo getPartnerInfo(String partnerToken) {
         Partner partner = partnerReader.getPartner(partnerToken);
         return PartnerInfo.of(partner);
     }
 
+    @Transactional
     @Override
     public PartnerInfo enablePartner(String partnerToken) {
         Partner partner = partnerReader.getPartner(partnerToken);
@@ -39,6 +40,7 @@ public class PartnerServiceImpl implements PartnerService{
         return PartnerInfo.of(partner);
     }
 
+    @Transactional
     @Override
     public PartnerInfo disablePartner(String partnerToken) {
         Partner partner = partnerReader. getPartner(partnerToken);

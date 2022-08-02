@@ -1,8 +1,9 @@
 package dev.practice.order.domain.partner;
 
+import lombok.Builder;
 import lombok.Getter;
 
-@Getter
+@Getter @Builder
 public class PartnerCommand {
     private String partnerName;
     private String businessNo;
