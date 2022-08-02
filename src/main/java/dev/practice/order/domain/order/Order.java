@@ -69,6 +69,13 @@ public class Order {
         this.status = Status.ORDER_COMPLETE;
     }
 
+    public boolean isAlreadyPaymentComplete() {
+        if (this.status != Status.INIT) {
+            return true;
+        }
+        return false;
+    }
+
     protected Order(Long userId, String payMethod, DeliveryFragment deliveryFragment) {
         this.orderToken = TokenGenerator.randomCharacterWithPrefix(ORDER_PREFIX);
         this.userId = userId;

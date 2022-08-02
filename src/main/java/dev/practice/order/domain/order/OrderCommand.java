@@ -5,6 +5,7 @@ import dev.practice.order.domain.order.fragment.DeliveryFragment;
 import dev.practice.order.domain.order.orderitem.OrderItem;
 import dev.practice.order.domain.order.orderitem.OrderItemOption;
 import dev.practice.order.domain.order.orderitem.OrderItemOptionGroup;
+import dev.practice.order.domain.order.payment.PayMethod;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -68,5 +69,13 @@ public class OrderCommand {
         public OrderItemOption toEntity(OrderItemOptionGroup orderItemOptionGroup) {
             return OrderItemOption.of(ordering, itemOptionName, itemOptionPrice, orderItemOptionGroup);
         }
+    }
+
+    @Getter @Builder
+    public static class PaymentRequest {
+        private String orderToken;
+        private PayMethod payMethod;
+        private Long amount;
+        private String orderDescription;
     }
 }

@@ -1,7 +1,7 @@
 package dev.practice.order.domain.order;
 
-import dev.practice.order.domain.order.fragment.DeliveryFragment;
 import dev.practice.order.domain.order.orderitem.OrderItem;
+import dev.practice.order.domain.order.payment.PayProcessor;
 import dev.practice.order.infrastructure.order.OrderInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +20,7 @@ public class OrderServiceImpl implements OrderService{
     private final OrderStore orderStore;
     private final OrderItemSeriesFactory orderItemSeriesFactory;
     private final OrderInfoMapper orderInfoMapper;
+    private final PayProcessor payProcessor;
 
     @Transactional
     @Override
@@ -36,5 +37,22 @@ public class OrderServiceImpl implements OrderService{
         List<OrderItem> orderItemList = order.getOrderItemList();
 
         return orderInfoMapper.of(order, orderItemList);
+    }
+
+    @Transactional
+    @Override
+    public void paymentOrder(OrderCommand.PaymentRequest paymentCommand) {
+
+        // getOrder
+        String orderToken = paymentCommand.getOrderToken();
+        Order order = orderReader.getOrder(orderToken);
+        payProcessor.pay(order, paymentCommand);
+
+
+        // validation check
+            // 주문 상태 체크, 이미 결제된건
+
+        // payProcessor
+
     }
 }
