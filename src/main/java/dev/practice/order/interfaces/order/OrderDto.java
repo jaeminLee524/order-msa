@@ -1,6 +1,7 @@
 package dev.practice.order.interfaces.order;
 
 import dev.practice.order.domain.order.orderitem.OrderItem;
+import dev.practice.order.domain.order.payment.PayMethod;
 import dev.practice.order.infrastructure.order.OrderInfo;
 import lombok.Getter;
 import lombok.Setter;
@@ -81,6 +82,14 @@ public class OrderDto {
 
         @NotNull(message = "itemOptionPrice 는 필수값입니다")
         private Long itemOptionPrice;
+    }
+
+    @Getter @Setter
+    public static class PaymentRequest {
+        private String orderToken;
+        private PayMethod payMethod;
+        private Long amount;
+        private String orderDescription;
     }
 
     /** response **/

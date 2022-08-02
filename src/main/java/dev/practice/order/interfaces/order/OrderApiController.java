@@ -3,6 +3,7 @@ package dev.practice.order.interfaces.order;
 import dev.practice.order.application.order.OrderFacade;
 import dev.practice.order.common.response.CommonResponse;
 import dev.practice.order.domain.order.OrderCommand;
+import dev.practice.order.domain.order.payment.PayMethod;
 import dev.practice.order.infrastructure.order.OrderInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,5 +47,19 @@ public class OrderApiController {
         OrderDto.Main response = orderDtoMapper.of(orderResult);
 
         return CommonResponse.success(response);
+    }
+
+    /**
+     * 주문 결제
+     * @author jaemin
+     * @version 1.0.0
+     * 작성일 2022/08/02
+     **/
+    @PostMapping("/payment-order")
+    public CommonResponse paymentOrder(@RequestBody @Valid OrderDto.PaymentRequest paymentRequest) {
+        OrderCommand.PaymentRequest paymentCommand = orderDtoMapper.of(paymentRequest);
+        orderFacade.paymentOrder(paymentCommand);
+
+        return CommonResponse.success("OK");
     }
 }

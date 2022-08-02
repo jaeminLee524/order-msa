@@ -22,6 +22,8 @@ public interface OrderDtoMapper {
 
     OrderCommand.RegisterOrderItemOption of(OrderDto.RegisterOrderItemOption request);
 
+    OrderCommand.PaymentRequest of(OrderDto.PaymentRequest paymentRequest);
+
 
     /** response **/
     OrderDto.RegisterResponse of(String orderToken);
