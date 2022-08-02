@@ -3,9 +3,7 @@ package dev.practice.order.interfaces.partner;
 import dev.practice.order.domain.partner.Partner;
 import dev.practice.order.domain.partner.PartnerCommand;
 import dev.practice.order.domain.partner.PartnerInfo;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -27,7 +25,8 @@ public class PartnerDto {
         }
 
     }
-    @Getter
+
+    @Getter @Setter
     public static class RegisterResponse {
         private String partnerToken;
         private String partnerName;
@@ -35,12 +34,5 @@ public class PartnerDto {
         private String email;
         private Partner.Status status;
 
-        public RegisterResponse(PartnerInfo partnerInfo) {
-            this.partnerToken = partnerInfo.getPartnerToken();
-            this.partnerName = partnerInfo.getPartnerName();
-            this.businessNo = partnerInfo.getBusinessNo();
-            this.email = partnerInfo.getEmail();
-            this.status = partnerInfo.getStatus();
-        }
     }
 }

@@ -13,7 +13,7 @@ import org.mapstruct.ReportingPolicy;
 )
 public interface PartnerDtoMapper {
 
-    // target method(Source source)
+    /** request **/
     PartnerCommand of(PartnerDto.RegisterRequest request);
 
     /** response **/
