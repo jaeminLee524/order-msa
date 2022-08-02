@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
@@ -30,7 +31,7 @@ public class OrderItemOptionGroup extends AbstractEntity {
     private OrderItem orderItem;
 
     @OneToMany(mappedBy = "orderItemOptionGroup", cascade = CascadeType.PERSIST)
-    private List<OrderItemOption> orderItemOptionList;
+    private List<OrderItemOption> orderItemOptionList = new ArrayList<>();
 
     /**
      * 옵션 그룹 총 가격

@@ -5,13 +5,14 @@ import dev.practice.order.domain.order.fragment.DeliveryFragment;
 import dev.practice.order.domain.order.orderitem.OrderItem;
 import dev.practice.order.domain.order.orderitem.OrderItemOption;
 import dev.practice.order.domain.order.orderitem.OrderItemOptionGroup;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
 
 public class OrderCommand {
 
-    @Getter
+    @Getter @Builder
     public static class RegisterOrder {
         private Long userId;
         private String payMethod;
@@ -31,7 +32,7 @@ public class OrderCommand {
         }
     }
 
-    @Getter
+    @Getter @Builder
     public static class RegisterOrderItem {
         private Integer orderCount;
         private String itemToken;
@@ -39,13 +40,14 @@ public class OrderCommand {
         private Long itemPrice;
         private List<RegisterOrderItemOptionGroup> orderItemOptionGroupList;
 
+
         public OrderItem toEntity(Order order, Item item) {
             return OrderItem.of(item.getPartnerId(), orderCount, item.getId(), item.getItemToken(), item.getItemName(), item.getItemPrice(), order);
         }
 
     }
 
-    @Getter
+    @Getter @Builder
     public static class RegisterOrderItemOptionGroup {
         private Integer ordering;
         private String itemOptionGroupName;
@@ -57,7 +59,7 @@ public class OrderCommand {
 
     }
 
-    @Getter
+    @Getter @Builder
     public static class RegisterOrderItemOption {
         private Integer ordering;
         private String itemOptionName;
