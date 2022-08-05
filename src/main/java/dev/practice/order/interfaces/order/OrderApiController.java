@@ -3,7 +3,6 @@ package dev.practice.order.interfaces.order;
 import dev.practice.order.application.order.OrderFacade;
 import dev.practice.order.common.response.CommonResponse;
 import dev.practice.order.domain.order.OrderCommand;
-import dev.practice.order.domain.order.payment.PayMethod;
 import dev.practice.order.infrastructure.order.OrderInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +26,7 @@ public class OrderApiController {
      * 작성일 2022/07/31
      **/
     @PostMapping("/init")
-    public CommonResponse registerOrder(@RequestBody @Valid OrderDto.RegisterOrderRequest request) {
+    public CommonResponse registerOrder(@RequestBody @Valid OrderDto.RegisterOrderReq request) {
         OrderCommand.RegisterOrder orderCommand = orderDtoMapper.of(request);
         String orderToken = orderFacade.registerOrder(orderCommand);
         OrderDto.RegisterResponse response = orderDtoMapper.of(orderToken);

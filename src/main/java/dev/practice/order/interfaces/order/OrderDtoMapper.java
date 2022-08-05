@@ -12,15 +12,15 @@ import org.mapstruct.*;
 public interface OrderDtoMapper {
     /** request **/
     @Mappings({@Mapping(target = "orderItemList", source = "request.orderItemList")})
-    OrderCommand.RegisterOrder of(OrderDto.RegisterOrderRequest request);
+    OrderCommand.RegisterOrder of(OrderDto.RegisterOrderReq request);
 
     @Mappings({@Mapping(target = "orderItemOptionGroupList", source = "request.orderItemOptionGroupList")})
-    OrderCommand.RegisterOrderItem of(OrderDto.RegisterOrderItem request);
+    OrderCommand.RegisterOrderItem of(OrderDto.RegisterOrderItemReq request);
 
     @Mappings({@Mapping(target = "orderItemOptionList", source = "request.orderItemOptionList")})
-    OrderCommand.RegisterOrderItemOptionGroup of(OrderDto.RegisterOrderItemOptionGroup request);
+    OrderCommand.RegisterOrderItemOptionGroup of(OrderDto.RegisterOrderItemOptionGroupReq request);
 
-    OrderCommand.RegisterOrderItemOption of(OrderDto.RegisterOrderItemOption request);
+    OrderCommand.RegisterOrderItemOption of(OrderDto.RegisterOrderItemOptionReq request);
 
     OrderCommand.PaymentRequest of(OrderDto.PaymentRequest paymentRequest);
 

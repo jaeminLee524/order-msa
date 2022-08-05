@@ -1,22 +1,18 @@
 package dev.practice.order.interfaces.order;
 
-import dev.practice.order.domain.order.orderitem.OrderItem;
 import dev.practice.order.domain.order.payment.PayMethod;
-import dev.practice.order.infrastructure.order.OrderInfo;
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.guieffect.qual.SafeEffect;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 public class OrderDto {
 
     /** request **/
     @Getter @Setter
-    public static class RegisterOrderRequest {
+    public static class RegisterOrderReq {
         @NotNull(message = "userId 는 필수값입니다")
         private Long userId;
 
@@ -41,11 +37,11 @@ public class OrderDto {
         @NotBlank(message = "etcMessage 는 필수값입니다")
         private String etcMessage;
 
-        private List<RegisterOrderItem> orderItemList;
+        private List<RegisterOrderItemReq> orderItemList;
     }
 
     @Getter @Setter
-    public static class RegisterOrderItem {
+    public static class RegisterOrderItemReq {
         @NotNull(message = "orderCount 는 필수값입니다")
         private Integer orderCount;
 
@@ -58,22 +54,22 @@ public class OrderDto {
         @NotNull(message = "itemPrice 는 필수값입니다")
         private Long itemPrice;
 
-        private List<RegisterOrderItemOptionGroup> orderItemOptionGroupList;
+        private List<RegisterOrderItemOptionGroupReq> orderItemOptionGroupList;
     }
 
     @Getter @Setter
-    public static class RegisterOrderItemOptionGroup {
+    public static class RegisterOrderItemOptionGroupReq {
         @NotNull(message = "ordering 는 필수값입니다")
         private Integer ordering;
 
         @NotBlank(message = "itemOptionGroupName 는 필수값입니다")
         private String itemOptionGroupName;
 
-        private List<RegisterOrderItemOption> orderItemOptionList;
+        private List<RegisterOrderItemOptionReq> orderItemOptionList;
     }
 
     @Getter @Setter
-    public static class RegisterOrderItemOption {
+    public static class RegisterOrderItemOptionReq {
         @NotNull(message = "ordering 는 필수값입니다")
         private Integer ordering;
 
