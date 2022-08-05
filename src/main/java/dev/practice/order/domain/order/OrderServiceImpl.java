@@ -42,17 +42,9 @@ public class OrderServiceImpl implements OrderService{
     @Transactional
     @Override
     public void paymentOrder(OrderCommand.PaymentRequest paymentCommand) {
-
-        // getOrder
         String orderToken = paymentCommand.getOrderToken();
         Order order = orderReader.getOrder(orderToken);
         payProcessor.pay(order, paymentCommand);
-
-
-        // validation check
-            // 주문 상태 체크, 이미 결제된건
-
-        // payProcessor
-
+        order.orderComplete();
     }
 }
