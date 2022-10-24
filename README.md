@@ -12,3 +12,6 @@
   - Application: 복잡한 비즈니스 로직을 처리
   - Domain: 도메인에 대한 정보, 객체의 상태, 도메인의 비즈니스 로직을 제공
   - Infrastructure: 영속성 구현, 외부와 통신하는 기능 제공
+
+- 주문, 선물하기 프로젝트 중 주문 프로젝트에 해당합니다
+  - 선물하기: https://github.com/jaeminLee524/gift-msa
